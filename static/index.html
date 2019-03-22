@@ -1,11 +1,9 @@
-
-
 <html>
 <head>
 	<title>MediaRecorder to RTMP Demo</title>
 	<script src="/socket.io/socket.io.js"></script>
 </head>
-<body style="max-width:1600px;height:100%;margin:auto;">
+<body style="max-width:2000px;height:100%;margin:auto;">
 <h1>
 MediaRecorder to RTMP Demo
 </h1>
@@ -33,14 +31,18 @@ MediaRecorder to RTMP Demo
 <hr/>
 <div >
 	<p id="output_message"></p>
+	<div>
 	
-	<video id="output_video" autoplay=true></video>
-	<div id="divtest">
-		<video id="videoElement" preload="none" ></video>
+			<video id="output_video" autoplay=true></video>
+		
+		
+		<span  id="divtest">
+			<video id="videoElement" preload="none" ></video>
+		</span >
 	</div>
 </div>
 <hr/>
-<textarea readonly="true" id="output_console" cols=180 rows=10>
+<textarea readonly="true" id="output_console" cols=160 rows=10>
 </textarea>
 <script src="flv.min.js"></script>
 

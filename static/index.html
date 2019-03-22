@@ -69,14 +69,15 @@ io.on('connection', function(socket){
 			'-re',
 			'-fflags', '+igndts',
 			'-i','-',
-			'-r','25',
+		
 			//'-c:v', 'h264_qsv',
 			'-vcodec', 'libx264',
+			'-r','25',
 			'-qp', '22',
 			//'-vcodec', 'copy',
 			//'-acodec', 'copy',
 			'-preset','ultrafast',
-			//'-b:v','1500K',
+			'-b:v','3K',
 			//'-crf' ,'22',
 			'-look_ahead' ,'0',
 			'-profile:v', 'baseline',
@@ -202,6 +203,8 @@ io.on('connection', function(socket){
 			try{
 				ffmpeg_process.stdin.end();
 				ffmpeg_process.kill('SIGINT');
+				socket.emit('fatal','ffmpeg exit!'+e);
+			socket.disconnect();
 			}catch(e){console.warn('killing ffmoeg process attempt failed...');}
 			return;
 		}

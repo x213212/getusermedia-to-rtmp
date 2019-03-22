@@ -36,11 +36,11 @@ MediaRecorder to RTMP Demo
 	
 	<video id="output_video" autoplay=true></video>
 	<div id="divtest">
-		<video id="videoElement" preload="none"  ></video>
+		<video id="videoElement" preload="none" ></video>
 	</div>
 </div>
 <hr/>
-<textarea readonly="true" id="output_console" cols=180 rows=5>
+<textarea readonly="true" id="output_console" cols=180 rows=10>
 </textarea>
 <script src="flv.min.js"></script>
 
@@ -87,10 +87,13 @@ button_start.disabled=true;
         flvPlayer = flvjs.createPlayer({
             type: 'flv',
             url: flvsource.value
-        });
+        },{   enableWorker: true,
+          enableStashBuffer: false,
+          stashInitialSize: 128// 减少首桢显示等待时长
+		  });
         flvPlayer.attachMediaElement(videoElement);
         flvPlayer.load();
-        flvPlayer.play();
+        //flvPlayer.play();
 
 		var media = document.getElementById("videoElement");
 		const playPromise = media.play();
